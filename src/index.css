@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-display: 'Cinzel', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: #FAF6F0;
+    color: #1A1318;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, .font-serif-editorial {
+    font-family: var(--font-serif);
+  }
+
+  .font-cinzel {
+    font-family: var(--font-display);
+  }
+}
+
+/* Subtle luxury paper grain & botanical micro-styling */
+.bg-parchment-grain {
+  background-color: #FAF6F0;
+  background-image: 
+    radial-gradient(at 15% 10%, rgba(104, 29, 84, 0.045) 0px, transparent 50%),
+    radial-gradient(at 85% 30%, rgba(197, 160, 101, 0.07) 0px, transparent 55%),
+    radial-gradient(at 45% 85%, rgba(27, 59, 43, 0.04) 0px, transparent 50%);
+}
+
+.bg-velours-dark {
+  background-color: #161115;
+  background-image:
+    radial-gradient(at 80% 0%, rgba(104, 29, 84, 0.28) 0px, transparent 55%),
+    radial-gradient(at 10% 90%, rgba(197, 160, 101, 0.12) 0px, transparent 50%);
+}
+
+/* Custom gold hairline dividers */
+.gold-hairline {
+  background: linear-gradient(90deg, transparent 0%, rgba(197, 160, 101, 0.55) 50%, transparent 100%);
+  height: 1px;
+}
+
+/* Custom Range Slider */
+input[type="range"].roseraie-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: #E5DEC9;
+  border-radius: 999px;
+  outline: none;
+}
+
+input[type="range"].roseraie-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #681D54;
+  border: 2px solid #C5A065;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(104, 29, 84, 0.35);
+  transition: transform 0.15s ease;
+}
+
+input[type="range"].roseraie-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
