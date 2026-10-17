@@ -94,18 +94,18 @@ export default function App() {
         target="_blank"
         rel="noreferrer"
         aria-label="WhatsApp Concierge +237 6 99 90 60 75"
-        className="fixed bottom-5 right-5 z-40 group flex items-center gap-2.5 pl-4 pr-5 py-3.5 rounded-full bg-[#1B3B2B] hover:bg-[#142d20] text-white shadow-[0_14px_34px_-6px_rgba(27,59,43,0.65)] border border-[#C5A065]/60 transition-all hover:-translate-y-0.5"
+        className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40 group flex items-center gap-2 sm:gap-2.5 px-3.5 py-2.5 sm:pl-4 sm:pr-5 sm:py-3.5 rounded-full bg-[#1B3B2B] hover:bg-[#142d20] text-white shadow-[0_14px_34px_-6px_rgba(27,59,43,0.65)] border border-[#C5A065]/60 transition-all hover:-translate-y-0.5"
       >
-        <span className="relative flex h-3 w-3">
+        <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C5A065] opacity-75" />
-          <span className="relative inline-flex rounded-full h-3 w-3 bg-[#C5A065]" />
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3 bg-[#C5A065]" />
         </span>
-        <MessageCircle className="w-5 h-5 text-[#C5A065]" />
+        <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#C5A065]" />
         <div className="text-left">
-          <p className="text-[10px] font-cinzel tracking-wider uppercase text-[#C5A065] leading-none">
+          <p className="hidden sm:block text-[10px] font-cinzel tracking-wider uppercase text-[#C5A065] leading-none">
             {lang === 'fr' ? 'Conciergerie Directe' : 'Direct Concierge'}
           </p>
-          <p className="text-xs font-semibold leading-tight mt-0.5">
+          <p className="text-[11px] sm:text-xs font-semibold leading-tight sm:mt-0.5">
             {VENUE_CONTACT.phoneDisplay}
           </p>
         </div>
