@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Phone, Calendar, Menu, X, Sparkles, Globe } from 'lucide-react';
+import { MapPin, Phone, Calendar, Menu, X, Sparkles, Globe, Building2 } from 'lucide-react';
 import { VENUE_CONTACT } from '../data/venueData';
 
 function InstagramSvg({ className = 'w-3.5 h-3.5' }) {
@@ -21,7 +21,7 @@ function InstagramSvg({ className = 'w-3.5 h-3.5' }) {
   );
 }
 
-export default function Navbar({ lang, setLang, t, onOpenTourModal }) {
+export default function Navbar({ lang, setLang, t, onOpenTourModal, onOpenDashboard }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -163,6 +163,16 @@ export default function Navbar({ lang, setLang, t, onOpenTourModal }) {
 
             <button
               type="button"
+              onClick={onOpenDashboard}
+              className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-[#C5A065]/50 bg-[#C5A065]/10 hover:bg-[#681D54] text-[#681D54] hover:text-[#FAF6F0] text-xs font-semibold tracking-wide transition-all cursor-pointer shadow-xs"
+              title="Accès Système de Gestion Hôtelière & Domaine"
+            >
+              <Building2 className="w-3.5 h-3.5 text-[#C5A065]" />
+              <span>Estate OS</span>
+            </button>
+
+            <button
+              type="button"
               onClick={onOpenTourModal}
               className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#681D54] hover:bg-[#521442] text-[#FAF6F0] text-xs font-semibold tracking-wide whitespace-nowrap shadow-[0_6px_20px_-4px_rgba(104,29,84,0.45)] transition-all hover:-translate-y-0.5 cursor-pointer border border-[#C5A065]/40"
             >
@@ -203,6 +213,17 @@ export default function Navbar({ lang, setLang, t, onOpenTourModal }) {
               ))}
             </div>
             <div className="pt-2 flex flex-col gap-2.5">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileOpen(false);
+                  onOpenDashboard();
+                }}
+                className="w-full py-3 rounded-full border border-[#C5A065]/60 bg-[#C5A065]/15 text-[#681D54] text-sm font-semibold flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+              >
+                <Building2 className="w-4 h-4 text-[#C5A065]" />
+                <span>Gestion Domaine · Estate OS</span>
+              </button>
               <button
                 type="button"
                 onClick={() => {

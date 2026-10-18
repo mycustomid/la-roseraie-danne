@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { MessageCircle, X, Calendar, MapPin, Phone, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { MessageCircle, X, Calendar, MapPin, Phone, Sparkles, Building2, ArrowLeft } from 'lucide-react';
 import { CONTENT, VENUE_CONTACT } from './data/venueData';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -8,10 +8,20 @@ import SpacesExplorer from './components/SpacesExplorer';
 import CelebrationsAndServices from './components/CelebrationsAndServices';
 import QuoteSimulator from './components/QuoteSimulator';
 import GalleryAndSocialProof from './components/GalleryAndSocialProof';
+import HotelDashboard from './components/dashboard/HotelDashboard';
 
 export default function App() {
   // Default strictly to French ('fr') per Bos's directive
   const [lang, setLang] = useState('fr');
+  const [viewMode, setViewMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('view') === 'dashboard' || window.location.hash === '#dashboard') {
+        return 'dashboard';
+      }
+    }
+    return 'website';
+  });
   const [selectedSpace, setSelectedSpace] = useState('privatisation');
   const [selectedAddons, setSelectedAddons] = useState(['traiteur', 'decor']);
   const [tourModalOpen, setTourModalOpen] = useState(false);
@@ -51,6 +61,14 @@ export default function App() {
     return `${VENUE_CONTACT.whatsappBaseUrl}?text=${encodeURIComponent(msg)}`;
   };
 
+  if (viewMode === 'dashboard') {
+    return (
+      <div className="min-h-screen bg-[#0F0D0E]">
+        <HotelDashboard onBackToWebsite={() => setViewMode('website')} />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF6F0] text-[#1A1318]">
       <Navbar
@@ -58,6 +76,7 @@ export default function App() {
         setLang={setLang}
         t={t}
         onOpenTourModal={() => setTourModalOpen(true)}
+        onOpenDashboard={() => setViewMode('dashboard')}
       />
 
       <main className="flex-1">
